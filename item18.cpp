@@ -11,6 +11,15 @@ int main(void) {
     std::cout << *p << "\n";
     free(p);
     Investment i;
+    int* p = new int(10);
+    delete p;
+
+    // *p = 5; // 未定义行为: 使用了悬空指针
+    std::unique_ptr<int> up(new int(20));
+    up.reset(); // 释放原有资源
+    up.reset(new int(30)); // 重新分配资源
+
+    
     
 }
 
@@ -22,6 +31,3 @@ class Stock: public Investment {};
 class Bond: public Investment {};
 class RealEstate: public Investment {};
 
-template<typename... Ts>
-std::unique_ptr<Investment>
-makeInvestment(Ts&&... params);
