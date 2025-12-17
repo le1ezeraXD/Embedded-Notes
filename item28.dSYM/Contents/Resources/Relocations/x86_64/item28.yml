@@ -1,0 +1,10 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     item28
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z13widgetFactoryv, symObjAddr: 0x0, symBinAddr: 0x100003F30, symSize: 0x10 }
+  - { offsetInCU: 0x2D1B, offset: 0x2D1B, size: 0x8, addend: 0x0, symName: __Z13widgetFactoryv, symObjAddr: 0x0, symBinAddr: 0x100003F30, symSize: 0x10 }
+  - { offsetInCU: 0x2D38, offset: 0x2D38, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x10, symBinAddr: 0x100003F40, symSize: 0x40 }
+  - { offsetInCU: 0x2D7C, offset: 0x2D7C, size: 0x8, addend: 0x0, symName: __Z4funcIR6WidgetEvOT_, symObjAddr: 0x50, symBinAddr: 0x100003F80, symSize: 0x10 }
+  - { offsetInCU: 0x2DAD, offset: 0x2DAD, size: 0x8, addend: 0x0, symName: __Z4funcI6WidgetEvOT_, symObjAddr: 0x60, symBinAddr: 0x100003F90, symSize: 0xA }
+...
