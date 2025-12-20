@@ -1,35 +1,18 @@
-// Item 34: 優先選用 Lambda，而非 std::bind
-#include <iostream>
-#include <functional>
-#include <chrono>
+// 对auto&&类型的形参使用decltype 以std::forward之
+#include<iostream>
+#include<vector>
+#include<memory>
 
-using namespace std::chrono;
-using namespace std::placeholders;
+class Widget {
+public:
+    
+};
 
-void setAlarm(steady_clock::time_point t, int volume) {
-    if (steady_clock::now() > t) {
-        std::cout << "Ding! Volume: " << volume << "\n";
-    } else {
-        std::cout << "Waiting...\n";
-    }
-}
-
-int main() {
-    auto oneHour = 1h;
-
-    // --- 1. 痛苦的 std::bind ---
-    // 陷阱：時間是在這裡計算的，不是在呼叫時計算的！
-    auto bindFunc = std::bind(setAlarm, steady_clock::now() + oneHour, _1);
-
-    // --- 2. 優雅的 Lambda ---
-    // 時間計算被延遲到函數體內，邏輯正確
-    auto lambdaFunc = [oneHour](int vol) {
-        setAlarm(steady_clock::now() + oneHour, vol);
+int main(void) {
+    // 因为传递给lambda的参数param是用auto修饰的
+    // 所以在forward<???>处要用decltype来获取变量的类型
+    // decltype: 是左值就返回左值 是右值就返回右值
+    auto func = [&](auto&& param...) {
+        return std::forward<decltype(param)>(param);
     };
-    
-    // --- 3. 呼叫 ---
-    bindFunc(10);   // 可讀性差，行為可能不符預期
-    lambdaFunc(10); // 清晰，正確
-    
-    std::cout << "Item 34 Completed. std::bind is dead.\n";
 }
