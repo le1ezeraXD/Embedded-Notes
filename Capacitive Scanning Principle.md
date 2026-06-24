@@ -61,5 +61,5 @@
 9. Imeas一勺一勺搬电荷, 每个时钟周期 Imeas这个固定电流源从积分电容中搬走固定量的电荷, 每搬一次, Ci中电荷少一些, 积分器输出电压降一些, 计数器+1; 不停舀不停数, 直至积分器输出降到Vref; 最终计数值就是RawData; 电荷越多 → 要舀越多勺 → 计数越大 → RawData 越大。而电荷 Qi 正比于 Cm。所以绕一圈，RawData 最终反映的就是 Cm 的大小
 10. 根据公式, 联立得: RawData = (Vtx*Cm – Ibl*Tbl)/Imeas;
 注: 这条线性公式描述的是理想关系, 真实 Sigma-Delta 是多周期逐次逼近, 公式是它的等效结果
-![alt text](FAE/image.png)
+![alt text](FAE/CSD.png)
 这张图和这套推导是单次积分加比较的简化模型，真实 Sigma-Delta 用多周期反复积分和反馈逼近来提升精度
